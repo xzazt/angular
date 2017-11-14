@@ -1,0 +1,35 @@
+
+
+<div ng-controller="loginController" id="_login" class="login_contain_conf">
+    <div class="form-group">
+        <label>请选择皮肤:</label>
+        <select class="form-control select" ng-change="skinSelectChange(skinSelectTemplate)" ng-model="skinSelectTemplate" ng-options="x.name for x in skipTemplate"></select>
+    </div>
+
+    <div class="login_contain_div">
+        <div class="table_div">
+        <table border="0" cellpadding="6" cellspacing="6">
+           <tr>
+               <td class="_td"><label>用户名：</label></td>
+               <td>
+                    <input ng-model="userName" class="form-control" type="text">
+               </td>
+           </tr>
+           <tr>
+               <td class="_td"><label>密&ensp;&ensp;码：</label></td>
+               <td>
+                   <input ng-model="passWord" class="form-control" type="text">
+               </td>
+           </tr>
+           <tr>
+               <td align="center" colspan="2">
+                   <button ng-click="login()" type="button" class="btn btn-default">登录</button>
+                   <button type="button" class="btn btn-primary">注册</button>
+               </td>
+           </tr>
+        </table>
+            <p>{{loginMessage}}</p>
+        </div>
+    </div>
+
+</div>
