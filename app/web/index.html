@@ -15,13 +15,17 @@
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
+    <!--common-->
+    <script src="common/directive/resize.js"></script>
+    <script src="common/directive/divCenter.js"></script>
+
 
 
 </head>
-<body>
+<body style="margin-top: 0;padding: 0;" resize>
 
 
-    <div ui-view></div>
+    <div  ng-style="style()" ui-view></div>
 
 <div>
 

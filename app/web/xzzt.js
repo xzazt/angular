@@ -1,11 +1,11 @@
 /* 此处定义模块，由于需要设定路由，所以要注入ngRoute */
 //var xzzt = angular.module('xzzt',['ui.router']);
-angular.module('xzzt',[
+var xzzt = angular.module('xzzt',[
     'ui.router',
     'oc.lazyLoad',
     'ngCookies'
-]).
-config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
+]);
+xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
     function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider)
 {
     //没有路由配置，跳转默认路由
@@ -42,7 +42,7 @@ config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
             }]
         }
     }).state('main', {
-        url: "/",
+        url: "/main",
         templateUrl: "main/main.html",
         controller:"mainController",
         resolve:{
@@ -70,6 +70,27 @@ config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
                     })
                 }*/
             }],
+        }
+    }).state('default', {
+        url: "/",
+        templateUrl: "login/login.html",
+        controller:"loginController",
+        resolve:{
+            loadConfig:['$ocLazyLoad','$cookies',function ($ocLazyLoad, $cookies) {
+                var skipTemlpateConf = $cookies.get("skipTemlpateConf");
+                if(skipTemlpateConf == null){
+                    skipTemlpateConf = 'default';
+                    $cookies.put("skipTemlpateConf",skipTemlpateConf);
+                };
+                return $ocLazyLoad.load({
+                    name : "loginConfig",
+                    files : [
+                        'login/resource/js/controller.js',
+                        'login/resource/skip/'+ skipTemlpateConf +'/css/all.css'
+                    ]
+
+                });
+            }]
         }
     });
 }]);
