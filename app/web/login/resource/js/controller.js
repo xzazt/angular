@@ -46,8 +46,9 @@ controller('loginController',function ($scope,$cookies,$state) {
         $state.go('main',{
 
         });
+        /*页面销毁触发方法*/
         $scope.$on('$destroy', function () {
-            alert('page1');
+            //alert('page1');
         });
 
     }
