@@ -93,6 +93,35 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
             }]
         }
     });
+
+    $stateProvider.state('user', {
+        url: "/user",
+        /*templateUrl : "xzzt/page/user/html/template.html"*/
+        views:{
+            'main':{
+                template:"xzzt/page/user/html/template.html"
+            }
+        }
+    });
+
+    /*initRoute();
+
+    function initRoute(){
+        var rs = pro.getRouteUrl();
+        angular.forEach(rs,function (data, index, arrar) {
+            console.info(data);
+            $stateProvider.state(data.state,{
+                url : data.url,
+                /!*templateUrl : data.templateUrl,*!/
+                views:{
+                    'main':{
+                        template:data.templateUrl
+                    }
+                }
+            });
+        })
+
+    };*/
 }]);
 /* 定义路由表（路由规则）*/
 /*xzzt.config(function($stateProvider , $urlRouterProvider) {

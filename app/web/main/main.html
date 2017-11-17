@@ -1,5 +1,18 @@
-<div class=".main_contain_conf" ng-controller="mainController">
-    main
-    <br>
-    {{ma}}
+<div class="main_contain_conf" ng-controller="mainController">
+    <!-- top -->
+    <div class="main_contain_top">
+        top
+    </div>
+    <!-- left menu -->
+    <div class="main_contain_left">
+        <ul>
+            <li ng-click="clickMenu('/#/user')">aaa</li>
+            <li ng-click="clickMenu('bbb')">bbb</li>
+            <li ng-click="clickMenu('ccc')">ccc</li>
+        </ul>
+    </div>
+    <!-- content -->
+    <div class="main_contain_content">
+        <div ui-view="main"></div>
+    </div>
 </div>

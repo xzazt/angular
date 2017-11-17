@@ -1,3 +1,16 @@
-main_contain_conf{
-    background-color: green;
+.main_contain_conf{
+    margin: 0px;
+    padding: 0px;
+}
+.main_contain_top{
+    width: 100%;
+    height: 80px;
+    border: 1px solid #cccccc;
+    float: left;
+}
+.main_contain_left{
+    width: 100px;
+    height: auto;
+    border: 1px solid #9acfea;
+    float: left;
 }
