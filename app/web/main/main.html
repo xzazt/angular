@@ -6,13 +6,11 @@
     <!-- left menu -->
     <div class="main_contain_left">
         <ul>
-            <li ng-click="clickMenu('/#/user')">aaa</li>
-            <li ng-click="clickMenu('bbb')">bbb</li>
-            <li ng-click="clickMenu('ccc')">ccc</li>
+            <li ui-sref="main.user">aaa</li>
         </ul>
     </div>
     <!-- content -->
     <div class="main_contain_content">
-        <div ui-view="main"></div>
+        <div ui-view></div>
     </div>
 </div>

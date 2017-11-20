@@ -1,14 +1,14 @@
 var xzzrRoute = [
     {
-        "state" : "user",
+        "state" : "main.user",
         "url" : "/user",
-        "templateUrl" : "/xzzt/page/user/html/template.html",
-        "controller" : "userController"
-    },{
-        "state" : "bbb",
-        "url" : "bbb",
-        "templateUrl" : "/page/user/html/template1.html",
-        "controller" : "userController1"
+        "templateUrl" : "xzzt/page/user/html/template.html",
+        "controller" : "userController",
+        "name" : "userConfig",
+        "files" : [
+            'xzzt/page/user/js/controller.js',
+            'xzzt/page/user/skip/default/css/all.css'
+        ]
     }
 ];
 if(pro.getRouteUrl().length == 0){

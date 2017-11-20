@@ -94,17 +94,12 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
         }
     });
 
-    $stateProvider.state('user', {
+    /*$stateProvider.state('main.user', {
         url: "/user",
-        /*templateUrl : "xzzt/page/user/html/template.html"*/
-        views:{
-            'main':{
-                template:"xzzt/page/user/html/template.html"
-            }
-        }
-    });
+        templateUrl : "xzzt/page/user/html/template.html"
+    });*/
 
-    /*initRoute();
+    initRoute();
 
     function initRoute(){
         var rs = pro.getRouteUrl();
@@ -112,16 +107,20 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
             console.info(data);
             $stateProvider.state(data.state,{
                 url : data.url,
-                /!*templateUrl : data.templateUrl,*!/
-                views:{
-                    'main':{
-                        template:data.templateUrl
-                    }
+                templateUrl : data.templateUrl,
+                controller : data.controller,
+                resolve : {
+                    loadConfig : ['$ocLazyLoad',function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:data.name,
+                            files:data.files
+                        });
+                    }]
                 }
             });
         })
 
-    };*/
+    };
 }]);
 /* 定义路由表（路由规则）*/
 /*xzzt.config(function($stateProvider , $urlRouterProvider) {
