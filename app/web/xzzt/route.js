@@ -9,6 +9,16 @@ var xzzrRoute = [
             'xzzt/page/user/js/controller.js',
             'xzzt/page/user/skip/default/css/all.css'
         ]
+    },{
+        "state" : "main.role",
+        "url" : "/role",
+        "templateUrl" : "xzzt/page/role/html/template.html",
+        "controller" : "roleController",
+        "name" : "roleConfig",
+        "files" : [
+            'xzzt/page/role/js/controller.js',
+            'xzzt/page/role/skip/default/css/all.css'
+        ]
     }
 ];
 if(pro.getRouteUrl().length == 0){

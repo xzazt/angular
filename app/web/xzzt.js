@@ -101,6 +101,11 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
 
     initRoute();
 
+    /*initUrl();*/
+
+    /**
+     * 初始化路由
+     */
     function initRoute(){
         var rs = pro.getRouteUrl();
         angular.forEach(rs,function (data, index, arrar) {
@@ -121,6 +126,20 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
         })
 
     };
+
+    /**
+     * 初始化请求
+     */
+    /*function initUrl() {
+        $http({
+            type:"get",
+            url:"xzzt/dateUrl.json"
+        }).then(function success(response) {
+            console.info("success")
+        },function error(response) {
+            console.info(error);
+        });
+    }*/
 }]);
 /* 定义路由表（路由规则）*/
 /*xzzt.config(function($stateProvider , $urlRouterProvider) {
