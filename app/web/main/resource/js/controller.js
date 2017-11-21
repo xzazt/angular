@@ -1,13 +1,12 @@
-angular.module("xzzt",[]).controller('mainController',function ($scope,$state) {
+angular.module("xzzt").controller('mainController',function ($scope,mainService) {
 
-    $scope.clickMenu = function(obj){
-        console.info(obj)
-        //location.href = obj;
-        $state.go('main.user',{
-
-        });
-    }
-
+    //console.info(mainService.getMenu());
+    $scope.aaa = 123;
+    mainService.getUser().then(function success(data) {
+        console.info(data);
+    },function error(data) {
+        console.info(data);
+    });
     $scope.$on('$destroy', function () {
         alert('page1');
     });

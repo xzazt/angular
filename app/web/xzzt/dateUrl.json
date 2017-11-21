@@ -2,9 +2,13 @@
     "name" : "xzzt",
     "api" : {
         "getUser" : {
-            "name" : "getUser",
             "type" : "post",
             "url" : "/user/getUser",
+            "params" : "*"
+        },
+        "getMenu" : {
+            "type" : "post",
+            "url" : "/menu/getMenu",
             "params" : "*"
         }
     }

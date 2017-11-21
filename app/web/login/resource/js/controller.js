@@ -1,8 +1,5 @@
-angular.module("xzzt",[
-    'ui.router',
-    'oc.lazyLoad',
-    'ngCookies']).
-controller('loginController',function ($scope,$cookies,$state) {
+angular.module("xzzt").controller('loginController',['$scope','$cookies','$state','loginService',function ($scope,$cookies,$state,loginService) {
+    loginService.isLogin();
     $scope.skipTemplate = [
         {
             "name":"默认",
@@ -52,4 +49,4 @@ controller('loginController',function ($scope,$cookies,$state) {
         });
 
     }
-});
+}]);

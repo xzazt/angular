@@ -5,11 +5,12 @@ var xzzt = angular.module('xzzt',[
     'oc.lazyLoad',
     'ngCookies'
 ]);
-xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
-    function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider)
+xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider','xzztConfig',
+    function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider,xzztConfig)
 {
+
     //没有路由配置，跳转默认路由
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/login");
 
     //全局配置
     $ocLazyLoadProvider.config({
@@ -23,7 +24,7 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
     $stateProvider.state('login', {
         url: "/login",
         templateUrl: "login/login.html",
-        controller:"loginController",
+        controller:"loginController",//这里定义了，不用ng-controller再定义了，不然会运行2次了
         resolve:{
             loadConfig:['$ocLazyLoad','$cookies',function ($ocLazyLoad, $cookies) {
                 var skipTemlpateConf = $cookies.get("skipTemlpateConf");
@@ -35,6 +36,7 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
                     name : "loginConfig",
                     files : [
                         'login/resource/js/controller.js',
+                        'login/resource/js/service.js',
                         'login/resource/skip/'+ skipTemlpateConf +'/css/all.css'
                     ]
 
@@ -56,20 +58,24 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
                     name : "mainConfig",
                     files : [
                         'main/resource/js/controller.js',
-                        '../bower_components/bootstrap/dist/css/bootstrap.css',
-                        'main/resource/skip/'+ skipTemlpateConf +'/css/all.css'
+                        'main/resource/skip/'+ skipTemlpateConf +'/css/all.css',
+                        'main/resource/js/service.js'
                     ]
 
                 });
             }],
             isLogin:['$state','$cookies',function ($state,$cookies) {
-                /*var isLogin = $cookies.get("isLogin");
+                var isLogin = $cookies.get("isLogin");
                 if(!isLogin){
-                    $state.go('login',{
-
-                    })
-                }*/
+                    $state.go('login',{})
+                }
             }],
+            loadFactory : ['$ocLazyLoad',function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name:"loadFactoryName",
+                    files : getLoadFactory(xzztConfig,['DataFactory'])
+                });
+            }]
         }
     }).state('default', {
         url: "/",
@@ -94,14 +100,8 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
         }
     });
 
-    /*$stateProvider.state('main.user', {
-        url: "/user",
-        templateUrl : "xzzt/page/user/html/template.html"
-    });*/
 
     initRoute();
-
-    /*initUrl();*/
 
     /**
      * 初始化路由
@@ -109,7 +109,6 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
     function initRoute(){
         var rs = pro.getRouteUrl();
         angular.forEach(rs,function (data, index, arrar) {
-            console.info(data);
             $stateProvider.state(data.state,{
                 url : data.url,
                 templateUrl : data.templateUrl,
@@ -127,58 +126,31 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider',
 
     };
 
+
     /**
-     * 初始化请求
+     * 加载factory服务
      */
-    /*function initUrl() {
-        $http({
-            type:"get",
-            url:"xzzt/dateUrl.json"
-        }).then(function success(response) {
-            console.info("success")
-        },function error(response) {
-            console.info(error);
-        });
-    }*/
+    function getLoadFactory(xzztConfig,keys) {
+        var result = [];
+        if(keys.length === 0){
+            result = [];
+        }else{
+           angular.forEach(keys,function (data, index, array) {
+               result = addFile(result,xzztConfig[data].files);
+           })
+        }
+        return result;
+    }
+
+    function addFile(list1, list2) {
+        angular.forEach(list2,function (data, index, array) {
+            list1.push(data);
+        })
+        return list1;
+    }
+
 }]);
-/* 定义路由表（路由规则）*/
-/*xzzt.config(function($stateProvider , $urlRouterProvider) {
-    console.info("xzzt config...")
-    $stateProvider.state('index',{
-        url:"/",
-        template:"index"
-    }).state('web',{
-        url:"web",
-        template:"aaa"    }).state('login',{
-        url:"login",
-        template:"login"
-    })
-});*/
-/*
-xzzt.config(['$routeProvider',function ($routeProvider) {
-    console.info("app config");
-    /!* $routeProvider 就相当于交通警察，根据when和otherwise指挥路由走向 *!/
-    $routeProvider
-        .when("/",{
-            // 当请求的“URL” / , 找当前定义控制器和视图
-            controller: 'loginController',
-            /!* template: '<h1>{{hello}}</h1>' *!/
-            templateUrl: 'login/login.html',
-            resolve:{
-                "skipTemplate" : function(){
-                   return [{
-                           "name":"默认",
-                           "value":"default"
-                       },{
-                           "name":"蓝色",
-                           "value":"zt"
-                   }]
-               }
-            }
-        })
-        .otherwise({
-            /!* 都不匹配，定向到根目录 *!/
-            redirectTo: 'main'
-        })
-}]);*/
+
+
+
 
