@@ -1,0 +1,5 @@
+angular在ui-route中路由跳转，配置$stateProvider.state时，有个controller属性，
+这时，如果在页面配置有ng-controller指令是，controller.js 就会执行两次，
+解决办法是：
+    去掉任意一个，只保留一种方法就行
+

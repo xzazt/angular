@@ -1,0 +1,7 @@
+oracle maven 将本地jar包加入maven本地仓库的办法
+mvn install:install-file
+-DgroupId=com.oracle
+-DartifactId=ojdbc6
+-Dversion=16
+-Dpackaging=jar
+-Dfile=D:\database\oracle11gServer\product\11.2.0\dbhome_1\jdbc\lib\ojdbc6.jar
