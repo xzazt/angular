@@ -11,7 +11,6 @@ xzzt.directive('divCenter',function ($window) {
                 }
             };
             $scope.$watch($scope.getMarginSize,function (newValue) {
-                console.info(newValue);
                 element.css('margin-top',newValue.h + 'px');
                 element.css('margin-left',newValue.w + 'px');
             },true);

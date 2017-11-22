@@ -1,11 +1,11 @@
 
 
-<div ng-controller="loginController" class="login_contain">
+<div class="login_contain">
     <div class="login_contain_form" div-center>
-        <div class="form-group" ng-show="false">
+       <!-- <div class="form-group" ng-show="false">
             <label>请选择皮肤:</label>
             <select class="form-control select" ng-change="skinSelectChange(skinSelectTemplate)" ng-model="skinSelectTemplate" ng-options="x.name for x in skipTemplate"></select>
-        </div>
+        </div>-->
 
         <div class="login_contain_div">
             <div class="table_div">
@@ -29,12 +29,14 @@
                     </tr>
                     <tr align="center">
                         <td colspan="2">
+                            <div class="">
                             <button ng-click="login()" type="button" class="btn btn-default">登录</button>
                             <button type="button" class="btn btn-primary">注册</button>
+                            </div>
                         </td>
                     </tr>
                 </table>
-                <p>{{loginMessage}}</p>
+                <p class="login_contain_message">{{loginMessage}}</p>
             </div>
         </div>
 

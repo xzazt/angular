@@ -1,4 +1,4 @@
-.login_contain {
+.login_contain{
   background-image: url(../img/blur-bg.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -6,33 +6,32 @@
   background-size: cover;
   height: 100%;
   width: 100%;
-  float: left; }
-
-.login_contain_form {
+  float: left;
+}
+.login_contain_form{
   width: 500px;
   height: 400px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0,0,0,.55);
   border-radius: 5px;
-  padding: 5px; }
-
-.login_contain_div {
+  padding: 5px;
+}
+.login_contain_div{
   width: 100%;
-  height: 100%; }
-
-.table_div {
-  margin: 10px; }
-
-.table_div table {
-  width: 100%; }
-
-.table_div table tr {
+  height: 100%;
+}
+.table_div{
+  margin: 10px;
+}
+.table_div table{
+  width: 100%;
+}
+.table_div table tr{
   display: block;
-  margin: 10px; }
-
-.login_contain_message {
+  margin: 10px;
+}
+.login_contain_message{
   text-align: center;
   margin-top: 10px;
-  color: greenyellow; }
-
-/*# sourceMappingURL=all.css.map */
+  color: greenyellow;
+}

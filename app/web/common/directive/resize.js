@@ -7,7 +7,6 @@ xzzt.directive('resize',function ($window) {
             return { 'h': w[0].innerHeight, 'w': w[0].innerWidth };
         };
         $scope.$watch($scope.getWindowDimensions, function (newValue) {
-            console.info(newValue);
             $scope.style = function () {
                 return {
                     'height': (newValue.h) + 'px',

@@ -40,9 +40,7 @@ angular.module("xzzt").controller('loginController',['$scope','$cookies','$state
         $scope.loginMessage = '';
 
         $cookies.put("isLogin",true);
-        $state.go('main',{
-
-        });
+        $state.go('main',{});
         /*页面销毁触发方法*/
         $scope.$on('$destroy', function () {
             //alert('page1');

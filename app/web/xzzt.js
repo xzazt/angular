@@ -5,12 +5,14 @@ var xzzt = angular.module('xzzt',[
     'oc.lazyLoad',
     'ngCookies'
 ]);
-xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider','xzztConfig',
-    function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider,xzztConfig)
+xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider','xzztConfig','$locationProvider',
+    function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider,xzztConfig,$locationProvider)
 {
 
     //没有路由配置，跳转默认路由
     $urlRouterProvider.otherwise("/login");
+
+    $locationProvider.hashPrefix('');
 
     //全局配置
     $ocLazyLoadProvider.config({
@@ -70,33 +72,12 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider','xzztC
                     $state.go('login',{})
                 }
             }],
-            loadFactory : ['$ocLazyLoad',function ($ocLazyLoad) {
+            /*loadFactory : ['$ocLazyLoad',function ($ocLazyLoad) {
                 return $ocLazyLoad.load({
                     name:"loadFactoryName",
                     files : getLoadFactory(xzztConfig,['DataFactory'])
                 });
-            }]
-        }
-    }).state('default', {
-        url: "/",
-        templateUrl: "login/login.html",
-        controller:"loginController",
-        resolve:{
-            loadConfig:['$ocLazyLoad','$cookies',function ($ocLazyLoad, $cookies) {
-                var skipTemlpateConf = $cookies.get("skipTemlpateConf");
-                if(skipTemlpateConf == null){
-                    skipTemlpateConf = 'default';
-                    $cookies.put("skipTemlpateConf",skipTemlpateConf);
-                };
-                return $ocLazyLoad.load({
-                    name : "loginConfig",
-                    files : [
-                        'login/resource/js/controller.js',
-                        'login/resource/skip/'+ skipTemlpateConf +'/css/all.css'
-                    ]
-
-                });
-            }]
+            }]*/
         }
     });
 
