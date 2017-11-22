@@ -2,17 +2,13 @@
 
 <div class="login_contain">
     <div class="login_contain_form" div-center>
-       <!-- <div class="form-group" ng-show="false">
-            <label>请选择皮肤:</label>
-            <select class="form-control select" ng-change="skinSelectChange(skinSelectTemplate)" ng-model="skinSelectTemplate" ng-options="x.name for x in skipTemplate"></select>
-        </div>-->
 
         <div class="login_contain_div">
             <div class="table_div">
                 <table border="0" cellpadding="6" cellspacing="6">
                     <tr align="center">
                         <td colspan="2">
-                            <h3>登录</h3>
+                            <h3>注册</h3>
                         </td>
                     </tr>
                     <tr>
@@ -30,8 +26,8 @@
                     <tr align="center">
                         <td colspan="2">
                             <div class="">
-                            <button ng-click="login()" type="button" class="btn btn-default">登录</button>
-                            <button ui-sref="regedit" type="button" class="btn btn-primary">注册</button>
+                            <button ng-click="regedit()" type="button" class="btn btn-default">注册</button>
+                            <button ui-sref="login" type="button" class="btn btn-primary">返回</button>
                             </div>
                         </td>
                     </tr>

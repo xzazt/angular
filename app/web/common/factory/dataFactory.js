@@ -28,8 +28,8 @@ angular.module("xzzt").factory('dataFactory',function ($http,$q) {
             $http({
                 type : data.type,
                 url : subiff + data.url,
-                params : params,
-                headers : {'Content-Type':'application/x-www-form-urlencoded'}
+                params : params
+               /* headers : {'Content-Type':'application/x-www-form-urlencoded'}*/
             }).then(function success(response){
                 //console.info("111"+response);
                 defer.resolve(response.data);

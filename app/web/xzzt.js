@@ -79,7 +79,29 @@ xzzt.config(['$stateProvider', '$urlRouterProvider','$ocLazyLoadProvider','xzztC
                 });
             }]*/
         }
-    });
+    }).state('regedit', {
+    url: "/regedit",
+    templateUrl: "regedit/template.html",
+    controller:"regeditController",
+    resolve:{
+        loadConfig:['$ocLazyLoad','$cookies',function ($ocLazyLoad,$cookies) {
+            var skipTemlpateConf = $cookies.get("skipTemlpateConf");
+            if(skipTemlpateConf == null){
+                skipTemlpateConf = 'default';
+                $cookies.put("skipTemlpateConf",skipTemlpateConf);
+            };
+            return $ocLazyLoad.load({
+                name : "regeditConfig",
+                files : [
+                    'regedit/resource/js/controller.js',
+                    'regedit/resource/skip/'+ skipTemlpateConf +'/css/all.css',
+                    'regedit/resource/js/service.js'
+                ]
+
+            });
+        }]
+    }
+});;
 
 
     initRoute();
