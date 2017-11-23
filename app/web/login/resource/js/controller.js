@@ -38,6 +38,15 @@ angular.module("xzzt").controller('loginController',['$scope','$cookies','$state
             return;
         }
         $scope.loginMessage = '';
+        var params = {
+            loginName:$scope.userName,
+            password:$scope.passWord
+        };
+        loginService.doLogin(params).then(function success(data) {
+            console.info("success");
+        },function error(data) {
+            console.info("error");
+        });
 
         $cookies.put("isLogin",true);
         $state.go('main',{});

@@ -23,6 +23,7 @@ angular.module("xzzt").factory('dataFactory',function ($http,$q) {
     angular.forEach(url,function (data, index, arrar) {
        /* var subiff = "http://localhost:8046/xzazt";*/
         subiff = "/xzazt";
+        console.info(data.type);
         apis[index] = function (params) {
             var defer = $q.defer();
             $http({

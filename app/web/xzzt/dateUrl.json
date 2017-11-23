@@ -10,6 +10,11 @@
             "type" : "post",
             "url" : "/menu/getMenu",
             "params" : "*"
+        },
+        "doLogin" : {
+            "type" : "post",
+            "url" : "/user/doLogin",
+            "params" : "*"
         }
     }
 }
